@@ -8,6 +8,8 @@ import membership_management.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderServiceTest {
     MemberService memberService;
@@ -15,9 +17,9 @@ public class OrderServiceTest {
 
     @BeforeEach
     public void beforeEach(){
-        AppConfig appConfig = new AppConfig();
-        memberService = appConfig.memberService();
-        orderService = appConfig.orderService();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = context.getBean("memberService",MemberService.class);
+        orderService = context.getBean("orderService",OrderService.class);
     }
     @Test
     void createOrder(){
