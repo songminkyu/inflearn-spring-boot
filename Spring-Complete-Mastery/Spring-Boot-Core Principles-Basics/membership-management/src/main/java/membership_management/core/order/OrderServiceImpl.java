@@ -3,7 +3,10 @@ package membership_management.core.order;
 import membership_management.core.discount.DiscountPolicy;
 import membership_management.core.member.Member;
 import membership_management.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     //ocp/DIP 위반 -> 구체가 바뀌면 클라이언트 코드가 변경 되기때문에
@@ -15,7 +18,9 @@ public class OrderServiceImpl implements OrderService {
     //DIP 위반 아님(구현체를 직접 의존 않고 인터페이스에 의존 할수 있도록 변경)
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
-    
+
+    //Autowired를 사용하면 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

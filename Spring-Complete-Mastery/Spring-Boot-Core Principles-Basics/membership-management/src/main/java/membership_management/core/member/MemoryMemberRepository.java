@@ -1,8 +1,11 @@
 package membership_management.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository {
 
     //HashMap 동시성 이슈가 있으므로 ConcurrentHashMap 사용 하는게 좋다
