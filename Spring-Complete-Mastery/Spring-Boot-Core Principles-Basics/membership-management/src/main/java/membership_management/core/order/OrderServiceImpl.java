@@ -1,13 +1,16 @@
 package membership_management.core.order;
 
 import lombok.RequiredArgsConstructor;
+import membership_management.core.annotation.MainDiscountPolicy;
 import membership_management.core.discount.DiscountPolicy;
 import membership_management.core.member.Member;
 import membership_management.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     //ocp/DIP 위반 -> 구체가 바뀌면 클라이언트 코드가 변경 되기때문에
@@ -24,10 +27,11 @@ public class OrderServiceImpl implements OrderService {
     //클래스 상단에 롬복의 @RequiredArgsConstructor 선언 할경우 생성자를 암시적으로 생성 해준다
     //Autowired를 사용하면 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
     //생성자가 1개 일때는 Autowired 생략 가능, 이유는 Autowired 암시적으로 적용 되어 있음
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
