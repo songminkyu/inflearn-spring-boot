@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     //Autowired를 사용하면 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
-    @Autowired
+    //생성자가 1개 일때는 Autowired 생략 가능, 이유는 Autowired 암시적으로 적용 되어 있음
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

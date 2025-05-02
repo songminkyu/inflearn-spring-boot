@@ -17,9 +17,9 @@ public class AutoAppConfig {
 
     //자동으로 등록된 빈보다 아래와 같이 수동 으로 입력한 빈이 우선권을 갖는다.
     //Overriding bean definition for bean 'memoryMemberRepository' with a different definition: replacing
-    @Bean(name="memoryMemberRepository")
-    MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name="memoryMemberRepository")
+//    MemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
+//    }
 
 }
