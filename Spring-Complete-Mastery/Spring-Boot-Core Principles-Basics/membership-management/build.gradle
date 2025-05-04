@@ -26,6 +26,7 @@ configurations {
 //lombok 설정 추가 끝
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
